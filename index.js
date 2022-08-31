@@ -43,15 +43,11 @@ if(previousNotes){
 deleteBtn.addEventListener("click", clearAllNotes);
 
 urlBtn.addEventListener("click", function(){
-    notesList.innerHTML += `<li>
-                                <a href='${window.location.href}'>
-                                    ${window.location.href}    
-                                </a>
-                            </li>`;
     notes.push(`<a href='${window.location.href}'>
                       ${window.location.href}    
                 </a>`
     );
-    inputEl.value += "";
+    inputEl.value = "";
     showNotes();
 })
+
