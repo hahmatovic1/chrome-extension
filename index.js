@@ -3,6 +3,9 @@ const notesList = document.getElementById("notes-list");
 const inputEl = document.getElementById("input-el");
 
 let notes = [];
+let previousNotes = JSON.parse(localStorage.getItem("notes"));
+
+
 
 function showNotes(){
     let listNotes = "";
@@ -16,7 +19,13 @@ function showNotes(){
 inputBtn.addEventListener("click", function(){
     notes.push(inputEl.value);
     inputEl.value = "";
+    localStorage.setItem("notes", JSON.stringify(notes));
     showNotes()
 })
 
+// local storage manipulation
 
+if(previousNotes){
+    notes = previousNotes;
+    showNotes();
+}
