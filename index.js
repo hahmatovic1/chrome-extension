@@ -73,7 +73,7 @@ exportBtn.addEventListener("click", function(){
     // Generate download of hello.txt 
     // file with some content
     let text = notes.join("\n- ");
-    var filename = "Notes"+ String(new Date()).substring(0,15) + ".txt";
+    var filename = "Notes "+ String(new Date()).substring(0,15) + ".txt";
 
     download(filename, text);
 }, false);
