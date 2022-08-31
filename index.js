@@ -1,10 +1,18 @@
+const deleteBtn = document.getElementById("delete-btn");
+const urlBtn = document.getElementById("url-btn");
+const exportBtn = document.getElementById("export-btn");
 const inputBtn = document.getElementById("input-btn");
 const notesList = document.getElementById("notes-list");
 const inputEl = document.getElementById("input-el");
 
 let notes = [];
-let previousNotes = JSON.parse(localStorage.getItem("notes"));
+const previousNotes = JSON.parse(localStorage.getItem("notes"));
 
+function clearAllNotes(){
+    notes = [];
+    localStorage.clear();
+    showNotes();
+}
 
 
 function showNotes(){
@@ -29,3 +37,5 @@ if(previousNotes){
     notes = previousNotes;
     showNotes();
 }
+
+deleteBtn.addEventListener("click", clearAllNotes);
