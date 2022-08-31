@@ -14,6 +14,7 @@ function clearAllNotes(){
     localStorage.clear();
     showNotes();
     inputEl.value = "";
+    location.reload();
 }
 
 
