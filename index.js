@@ -55,7 +55,7 @@ function download(file, text) {
               
     //creating an invisible element
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,- ' + encodeURIComponent(text));
     element.setAttribute('download', file);
   
     // <a href="path of file" download="file name">
@@ -68,5 +68,11 @@ function download(file, text) {
     document.body.removeChild(element);
 }
 
+exportBtn.addEventListener("click", function(){
+    // Generate download of hello.txt 
+    // file with some content
+    let text = notes.join("\n- ");
+    var filename = "Notes"+ String(new Date()).substring(0,15) + ".txt";
 
-    
+    download(filename, text);
+}, false);
