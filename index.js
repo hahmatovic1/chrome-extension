@@ -49,20 +49,24 @@ urlBtn.addEventListener("click", function(){
         localStorage.setItem("notes", JSON.stringify(notes));
         showNotes();
      });
-    
-     
-    
-    
-    // console.log(window.location.href);
-    // notes.push(`<a href='${window.location.href}'>
-    //                   ${window.location.href}    
-    //             </a>`
-    // );
-    // inputEl.value = "";
-    // showNotes();
 })
 
+function download(file, text) {
+              
+    //creating an invisible element
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', file);
+  
+    // <a href="path of file" download="file name">
+  
+    document.body.appendChild(element);
+  
+    //onClick property
+    element.click();
+  
+    document.body.removeChild(element);
+}
 
-const data=`test`;
-const blob = new Blob([data],{type:"octet-stream"});
-const href = URL.createObjectURL
+
+    
