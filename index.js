@@ -1,3 +1,4 @@
+
 const deleteBtn = document.getElementById("delete-btn");
 const urlBtn = document.getElementById("url-btn");
 const exportBtn = document.getElementById("export-btn");
@@ -43,11 +44,25 @@ if(previousNotes){
 deleteBtn.addEventListener("click", clearAllNotes);
 
 urlBtn.addEventListener("click", function(){
-    notes.push(`<a href='${window.location.href}'>
-                      ${window.location.href}    
-                </a>`
-    );
-    inputEl.value = "";
-    showNotes();
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        notes.push(tabs[0].url);
+        localStorage.setItem("notes", JSON.stringify(notes));
+        showNotes();
+     });
+    
+     
+    
+    
+    // console.log(window.location.href);
+    // notes.push(`<a href='${window.location.href}'>
+    //                   ${window.location.href}    
+    //             </a>`
+    // );
+    // inputEl.value = "";
+    // showNotes();
 })
 
+
+const data=`test`;
+const blob = new Blob([data],{type:"octet-stream"});
+const href = URL.createObjectURL
